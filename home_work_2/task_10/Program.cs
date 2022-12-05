@@ -1,8 +1,9 @@
-﻿
+﻿Console.Clear();
 Console.WriteLine("Введите трехзначное число");
-string? s = Console.ReadLine();
-int m = s.Length;
-if(m != 3)
-Console.WriteLine("Вы ввели не трехзначное чилло");
-else Console.WriteLine(Convert.ToInt32(s[1].ToString()));
+int n = Convert.ToInt32(Console.ReadLine());
+int x = n / 10;
+int y = x % 10;
+if(n < 100 || n > 999)Console.WriteLine("Вы ввели не трехзначное чилло");
+else
+Console.WriteLine(y);
 
