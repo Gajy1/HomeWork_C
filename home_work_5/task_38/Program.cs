@@ -1,5 +1,5 @@
 ﻿Console.Clear();
-double[] array = new double[16];
+double[] array = new double[11];
 void FillArray(double[] array)
 {
     int l = array.Length;
@@ -17,11 +17,22 @@ void FillArray(double[] array)
 
 void Fr(double[] array)
 {
-    
-    double summ = Math.Abs(array[15] - array[0]);
+  double  min = array[0];
+  double max = 0;
+    for(int i = 0; i < array.Length; i++)
+    {
+      if(array[i] > max)
+      max = array[i];
+      if(array[i] < min)
+      min = array[i];
+    }
+    double summ = Math.Abs(min - max);
     double s = Math.Round(summ, 2);
-  Console.WriteLine(s);
+    Console.Write($"max: {max} min:{min}");
+    Console.WriteLine();
+    Console.WriteLine($"Разница: {s}");
 }
+  
 
 
     
