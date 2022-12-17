@@ -23,7 +23,8 @@ void Fr(int[] array)
     if(i % 2 != 0)
     summ = summ + array[i];
   }
-  Console.WriteLine(summ);
+  Console.WriteLine();
+  Console.WriteLine($"Сумма элементов нечетных позиции: {summ}");
 }
 
 
