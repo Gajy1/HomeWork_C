@@ -19,58 +19,53 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-void ReleaseMatrix(int[,] matrix)
+void ReplaceElement(int[,] matrix)
 {
-   int n = 0;
    int i = 0;
    int j = 0;
+   int n = 0;
+   int s = matrix.GetLength(1);
    int count = 0;
    int printcount = 0;
-   int s = matrix.GetLength(1);
 
    while(i < matrix.GetLength(0))
    {
      if(matrix[i, n] >= matrix[i, j])
-      { 
-        count++;
-      }
-      
-
-      if(count == s)
-      {
-         Console.Write($"{matrix[i, n]} \t");
-         printcount++;
-         s = s -1;
-
-      } 
-        j++;
-
-      if(j == matrix.GetLength(1))
-      {
-        n++;
-        j = 0;
-      } 
-
-      if(n == matrix.GetLength(1) && printcount != matrix.GetLength(1))
-      {
-        n = 0;
-        j = 0;
-        
-      }
-
-      if(printcount == matrix.GetLength(1))
-      {
-        n = 0;
-        j = 0;
-        i++;
-        s = matrix.GetLength(1);
-        Console.WriteLine();
-      }
-
+     {
+      count++;
+     }
+     j++;
+     if(count == s)
+     {
+       Console.Write($"{matrix[i, n]} ");
+       printcount++;
+       s = s - 1;
+       count = 0;
+       j = 0;
+       n++;
+     }
+     if(n == matrix.GetLength(1))
+       n = 0;
+       
+     if(j == matrix.GetLength(1)  && count != s)
+     {
+      n++;
+      j = 0;
+      count = 0;
+     }
+     if(printcount == matrix.GetLength(1))
+     {
+      i++;
+      n = 0;
+      j = 0;
+      s = matrix.GetLength(1);
+      count = 0;
+      printcount = 0;
+      Console.WriteLine();
+     }
    }
+   
 }
-
-
 
 
 Console.Clear();
@@ -83,4 +78,6 @@ Console.WriteLine("Начальный массив:");
 InputMatrix(matrix);
 PrintMatrix(matrix);
 Console.WriteLine("Конечный массив:");
-ReleaseMatrix(matrix);
+ReplaceElement(matrix);
+
+
