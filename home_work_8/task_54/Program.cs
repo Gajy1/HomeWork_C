@@ -19,52 +19,23 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-void ReplaceElement(int[,] matrix)
+void ReleaseMatrix(int[,] matrix)
 {
-   int i = 0;
-   int j = 0;
-   int n = 0;
-   int s = matrix.GetLength(1);
-   int count = 0;
-   int printcount = 0;
-
-   while(i < matrix.GetLength(0))
-   {
-     if(matrix[i, n] >= matrix[i, j])
-     {
-      count++;
-     }
-     j++;
-     if(count == s)
-     {
-       Console.Write($"{matrix[i, n]} ");
-       printcount++;
-       s = s - 1;
-       count = 0;
-       j = 0;
-       n++;
-     }
-     if(n == matrix.GetLength(1))
-       n = 0;
-       
-     if(j == matrix.GetLength(1)  && count != s)
-     {
-      n++;
-      j = 0;
-      count = 0;
-     }
-     if(printcount == matrix.GetLength(1))
-     {
-      i++;
-      n = 0;
-      j = 0;
-      s = matrix.GetLength(1);
-      count = 0;
-      printcount = 0;
-      Console.WriteLine();
-     }
-   }
-   
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            for (int k = 0; k < matrix.GetLength(1) - 1; k++)
+            {
+                if (matrix[i, k] < matrix[i, k + 1])
+                {
+                    int temp = matrix[i, k + 1];
+                    matrix[i, k + 1] = matrix[i, k];
+                    matrix[i, k] = temp;
+                }
+            }
+        }
+    }
 }
 
 
@@ -78,6 +49,6 @@ Console.WriteLine("Начальный массив:");
 InputMatrix(matrix);
 PrintMatrix(matrix);
 Console.WriteLine("Конечный массив:");
-ReplaceElement(matrix);
-
+ReleaseMatrix(matrix);
+PrintMatrix(matrix);
 
